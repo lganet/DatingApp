@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DatingApp.API.Data;
 using DatingApp.API.Dtos;
+using DatingApp.API.Exceptions;
 using DatingApp.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -48,6 +49,8 @@ namespace DatingApp.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
         {
+            // throw new LoginDatingAppException("Opsssss !");
+
             var userFromRepo = await 
                 _repo.Login(userForLoginDto.Username.ToLower(), userForLoginDto.Password);
 
